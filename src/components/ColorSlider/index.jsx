@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
-const Slider = ( {baseColor, colorName, onValueChange} ) => {
-    const [valueColor, setValueColor] = useState(0);
-
-    const handleOnChange = (event) => {
-        setValueColor(event.target.value);
-        onValueChange(event.target.value);
-    }
-
+const Slider = ( {baseColor, colorName, onValueChange} ) => {   
     return (
     <>
         <label htmlFor={baseColor}>{colorName}</label>
-			<input onChange={(e) => handleOnChange(e)}
+			<input defaultValue={0} onChange={(e) => onValueChange(e.target.value) }
                 type="range"
                 className={`slider slider--${baseColor}`}
                 id={`${baseColor}Slider`}
                 min="0"
                 max="255"
-                value={valueColor}
             />
     </>
     )
